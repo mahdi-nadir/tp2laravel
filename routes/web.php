@@ -18,6 +18,7 @@ use App\Http\Controllers\CollectionController;
 Route::get('/', [CollectionController::class, 'index'])->name('toutesCollections');
 
 Route::get('/image', [ImageController::class, 'index'])->name('toutesImages');
+Route::get('/image/new', [ImageController::class, 'create'])->name('createImage');
 Route::get('/image/{slugImage}', [ImageController::class, 'show'])->name('slugImage');
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Visite;
+use App\Models\Collection;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -26,7 +27,8 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        $lesCollections = Collection::all();
+        return view('createImage')->with('lesCollections', $lesCollections);
     }
 
     /**
@@ -49,7 +51,6 @@ class ImageController extends Controller
     public function show(Request $request, $slugImage)
     {
         $image = Image::where('slug', $slugImage)->first();
-        // dd($request->header());
 
         $visite = Visite::create([
             'date' => now(),
