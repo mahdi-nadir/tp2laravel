@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\Visite;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -48,6 +49,13 @@ class ImageController extends Controller
     public function show(Request $request, $slugImage)
     {
         $image = Image::where('slug', $slugImage)->first();
+        // dd($request->header());
+
+        /* $visite = Visite::create([
+            'date' => now(),
+            'useragent' => $request->userAgent(),
+            'image_id' => $image->id,
+        ]); */
         return view('uneImage', compact('image'));
     }
 
