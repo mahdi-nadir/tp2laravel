@@ -51,11 +51,11 @@ class ImageController extends Controller
         $image = Image::where('slug', $slugImage)->first();
         // dd($request->header());
 
-        /* $visite = Visite::create([
+        $visite = Visite::create([
             'date' => now(),
             'useragent' => $request->userAgent(),
             'image_id' => $image->id,
-        ]); */
+        ]);
         return view('uneImage', compact('image'));
     }
 
