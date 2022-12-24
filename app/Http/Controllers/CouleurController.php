@@ -24,7 +24,6 @@ class CouleurController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -33,9 +32,17 @@ class CouleurController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $request->couleur = str_replace('#', '', $request->couleur);
+
+        $request->validate([
+            "couleur" => "required"
+        ]);
+
+        Couleur::create(['codeHexa' => $request->couleur, 'image_id' => $id]);
+
+        return redirect()->route('editImage', $id)->with('success', 'Couleur ajoutée');
     }
 
     /**

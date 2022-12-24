@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('url', 255)->unique();
+            $table->string('url', 255);
             $table->float('width');
             $table->float('height');
             $table->string('slug');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->softDeletes();
             $table->unsignedBigInteger('collection_id');
 
-            $table->foreign('collection_id')->references('id')->on('collections');
+            $table->foreign('collection_id')->references('id')->on('collections')->onDelete('cascade');
         });
     }
 

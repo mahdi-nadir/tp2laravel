@@ -21,7 +21,7 @@ return new class extends Migration
             $table->softDeletes();
             $table->unsignedBigInteger('image_id');
 
-            $table->foreign('image_id')->references('id')->on('images');
+            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
         });
     }
 
